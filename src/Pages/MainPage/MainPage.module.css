@@ -1,0 +1,80 @@
+.main {
+    width: 100%;
+    padding: 2rem;
+    gap: 1rem;
+    position: relative;
+    & h2 {
+        margin: 1rem 0;
+    }
+    & ul {
+        width: 100%;
+        padding-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        & li {
+            width: 33.3%;
+            height: max-content;
+            list-style: none;
+            overflow: hidden;
+            & a {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+.slider {
+    width: 100%;
+    aspect-ratio: 16/5; 
+    overflow: hidden;
+}
+
+.spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (width > 1300px) {
+    .main {
+        & ul {
+            & li {
+                width: 25%;
+            }
+        }
+    }
+}
+
+@media (width < 1000px) {
+    .main {
+        & h2 {
+            padding-left: 5px;
+        }
+        & ul {
+            & li {
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media (width < 769px) {
+    .main {
+        /* width: 100%; */
+        padding: 0;
+        gap: 0;
+        & ul {
+            & li {
+                width: 50%;
+            }
+            & a {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+
+

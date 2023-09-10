@@ -1,0 +1,38 @@
+.container {
+    width: 100dvw;
+    max-width: 1800px;
+    height: 100dvh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+}
+
+.outlet {
+    width: calc(100% - 280px);
+    height: calc(100dvh - 4rem);
+    display: flex;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 5px;
+    border-radius: 3px;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+@media (width < 769px) {
+    .outlet {
+        width: 100%;
+    }
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+}

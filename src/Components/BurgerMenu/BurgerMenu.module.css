@@ -1,0 +1,128 @@
+.backGround {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  animation: back 0.1s linear;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+}
+
+@keyframes back {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.burgerMenu {
+  position: absolute;
+  width: 350px;
+  height: 100dvh;
+  background-color: #fff;
+  box-shadow: 0 0 30px 2px rgba(0, 0, 0, 0.5);
+  animation: burgermenu 0.5s;
+  & li {
+    list-style: none;
+  }
+}
+
+@keyframes burgermenu {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: lightblue;
+    & span {
+        font-size: 1.5rem;
+        color: blue;
+    }
+}
+
+.logIn, .cart {
+  padding: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  & span {
+    height: 100%;
+    padding-right: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  & p {
+    min-width: 1.6rem;
+    aspect-ratio: 1;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.summary {
+  padding: 1rem 1rem 10px 1rem;
+  list-style: none;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  cursor: pointer;
+  & span {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    font-weight: 900;
+    transition: 1s;
+  }
+}
+
+.link {
+  font-size: 1.3rem;
+  padding: 5px 30px;
+  & a {
+    padding: 5px;
+    color: black;
+    display: flex;
+    & span {
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.ul {
+  overflow: hidden;
+}
+
+/* .cart {
+  font-size: 1.4rem;
+  padding: 1rem;
+  font-weight: 700;
+  background-color: #eeeeee;
+} */
+
+@media (width < 400px) {
+  .burgerMenu {
+    width: 100%;
+  }
+}

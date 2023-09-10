@@ -1,0 +1,10 @@
+:root {
+    --swiper-navigation-size: 30px;
+    --swiper-navigation-color: white;
+    --swiper-pagination-color: rgb(0, 179, 0);
+    /* --swiper-pagination-color: var(--swiper-theme-color); */
+    /* --swiper-navigation-top-offset: 50%; */
+    /* --swiper-navigation-sides-offset: 10px; */
+    /* --swiper-navigation-color: var(--swiper-theme-color); */
+}
+
