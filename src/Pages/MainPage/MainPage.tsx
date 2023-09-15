@@ -2,11 +2,11 @@ import Styles from "./MainPage.module.css";
 import StoreData from "../../store/StoreData";
 import { observer } from "mobx-react-lite";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Slider from "../../Components/Slider/Slider";
-import Spinner from "../../UI/Spinner/Spinner";
 
 const MainPage: React.FC = observer(() => {
+    const navigate = useNavigate();
     const data = StoreData.data
         .slice()
         .sort((a, b) => b.rating.rate - a.rating.rate);
@@ -18,26 +18,28 @@ const MainPage: React.FC = observer(() => {
             </div>
             <h2>Our products</h2>
             <ul>
-                {!StoreData.isSpinner ? (
+                {StoreData.isNetworkError && "Network error"}
                     <>
-                            {data.map((i) => {
-                                return (
-                                    <li 
-                                    key={i.title}>
-                                        <Link
-                                            to={`/goodspage/${i.category}/${i.id}`}
-                                        >
-                                            <ProductCard data={i} />
-                                        </Link>
-                                    </li>
-                                );
-                            })}
+                        {data.map((i) => {
+                            return (
+                                <li key={i.title}>
+                                    <div
+                                        className={Styles.link}
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            navigate(
+                                                `/goodspage/${i.category}/${i.id}`
+                                            )
+                                        }
+                                        }
+                                        // to={`/goodspage/${i.category}/${i.id}`}
+                                    >
+                                        <ProductCard data={i} />
+                                    </div>
+                                </li>
+                            );
+                        })}
                     </>
-                ) : (
-                    <span className={Styles.spinner}>
-                        <Spinner />
-                    </span>
-                )}
             </ul>
         </section>
     );

@@ -17,8 +17,9 @@ export type DataType = {
 
 class StoreData {
     data: Array<DataType> = [];
-    isSpinner: boolean = true;
+    isLoading: boolean = true;
     cart: Array<DataType> = [];
+    isNetworkError = false
 
     constructor() {
         makeAutoObservable(this);
@@ -31,11 +32,15 @@ class StoreData {
                 .then((json) => {
                     runInAction(() => {
                         this.data = json;
-                        this.isSpinner = false;
+                        this.isLoading = false;
                     });
+                })
+                .catch(err => {
+                    console.log('catch Network error', err)
+                    this.isNetworkError = true
                 });
         } catch (error) {
-            console.log('Network error');
+            console.log('Network error try catch');
         }
     }
 

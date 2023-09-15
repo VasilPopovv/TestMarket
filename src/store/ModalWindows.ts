@@ -1,23 +1,18 @@
-import {makeAutoObservable} from 'mobx'
+import { makeAutoObservable } from "mobx";
 
-class ModalWindows  {
-    // isRegWindow = false
-    isCartWindow = false
-    isBurgerMenu = false
+class ModalWindows {
+    isCartWindow = false;
+    isBurgerMenu = false;
 
     constructor() {
-        makeAutoObservable(this)
+        makeAutoObservable(this);
     }
-    
-    // openRegWind() {
-    //     this.isRegWindow = !this.isRegWindow
-    // }
     openBurgerMenu() {
-        this.isBurgerMenu = !this.isBurgerMenu
+        this.isBurgerMenu = !this.isBurgerMenu;
     }
     openCartWindow() {
-        this.isCartWindow = !this.isCartWindow
+        this.isCartWindow = !this.isCartWindow;
     }
 }
 
-export default new ModalWindows()
+export default new ModalWindows();

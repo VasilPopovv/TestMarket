@@ -31,7 +31,14 @@ const CartListComponent: React.FC<IProps> = ({ data }) => {
                         </Link>
                     </div>
                     <div
-                        onClick={() => StoreData.delFromCart(data.id)}
+                        onClick={() => {
+                            StoreData.delFromCart(data.id);
+                            if (!StoreData.cart.length) {
+                                setTimeout(() => {
+                                    ModalWindows.openCartWindow();
+                                }, 400);
+                            }
+                        }}
                         className={Styles.del}
                     >
                         <AiOutlineDelete />

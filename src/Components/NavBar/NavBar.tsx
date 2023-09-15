@@ -3,6 +3,8 @@ import Styles from "./NavBar.module.css";
 import { links } from "../NavLinks/NavLinks";
 import { memo } from "react";
 import { motion } from "framer-motion";
+import AppLinks from "../AppLinks/AppLinks";
+
 
 const NavBar = memo(() => {
     return (
@@ -10,15 +12,20 @@ const NavBar = memo(() => {
             <ul>
                 {links.map((i) => {
                     return (
-                        <motion.li whileTap={{ scale: 0.9 }} transition={{duration: 0.01}} key={i.title}>
+                        <motion.li
+                            whileTap={{ scale: 0.9 }}
+                            transition={{ duration: 0.01 }}
+                            key={i.category}
+                        >
                             <NavLink to={i.to}>
                                 <span>{i.icon}</span>
-                                {i.title}
+                                {i.category}
                             </NavLink>
                         </motion.li>
                     );
                 })}
             </ul>
+            <AppLinks />
         </div>
     );
 });

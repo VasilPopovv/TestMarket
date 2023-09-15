@@ -5,6 +5,7 @@ import StoreData from "../../store/StoreData";
 import ModalWindows from "../../store/ModalWindows";
 import { observer } from "mobx-react-lite";
 import { motion } from "framer-motion";
+import { BsCart3 } from "react-icons/bs";
 
 interface Idata {
     data: DataType;
@@ -14,10 +15,12 @@ const ProductCard: React.FC<Idata> = observer(({ data }) => {
     const rating = new Array(Math.round(data.rating.rate)).fill("");
 
     const addToCart = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
+        e.stopPropagation()
         e.preventDefault();
         StoreData.addToCart(id);
     };
     const openCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
         e.preventDefault();
         ModalWindows.openCartWindow();
     };
@@ -52,8 +55,9 @@ const ProductCard: React.FC<Idata> = observer(({ data }) => {
                     whileTap={{ scale: 0.97 }}
                     transition={{duration: 0.05}}
                     onClick={(e) => addToCart(e, data.id)}
+                    className={Styles.button}
                 >
-                    Add to cart
+                    <span><BsCart3 /></span><span>Add to cart</span>
                 </motion.button>
             )}
         </div>

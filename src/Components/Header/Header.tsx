@@ -3,7 +3,7 @@ import { BsCart3, BsSearch } from "react-icons/bs";
 import { PiUserCircle } from "react-icons/pi";
 import { HiMenu } from "react-icons/hi";
 import ModalWindows from "../../store/ModalWindows";
-import ModalRegister from "../../store/ModalRegistr";
+import ModalRegister from "../../store/ModalRegister";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 import { useMatchMedia } from "../../hooks/myMatcMedia";
@@ -61,7 +61,10 @@ const Header: React.FC = observer(() => {
                             <PiUserCircle />
                         </div>
                         <div
-                            onClick={() => ModalWindows.openCartWindow()}
+                            onClick={() => {
+                                if (!StoreData.cart.length) return;
+                                ModalWindows.openCartWindow();
+                            }}
                             className={Styles.cart}
                         >
                             <BsCart3 />

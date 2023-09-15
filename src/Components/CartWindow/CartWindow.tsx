@@ -24,8 +24,21 @@ const CartWindow: React.FC = observer(() => {
     };
 
     return (
-        <div className={Styles.backGround} onClick={closeWindow}>
-            <div onClick={(e) => e.stopPropagation()} className={Styles.window}>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className={Styles.backGround}
+            onClick={closeWindow}
+        >
+            <motion.div
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.8 }}
+                onClick={(e) => e.stopPropagation()}
+                className={Styles.window}
+            >
                 <div className={Styles.title}>
                     <span>Cart</span>
                     <span onClick={closeWindow}>
@@ -59,20 +72,15 @@ const CartWindow: React.FC = observer(() => {
                                 </AnimatePresence>
                             </motion.ul>
                         )}
-                        {/* {!StoreData.cart.length && <motion.p transition={{duration: 0.5}}>empty</motion.p>} */}
                     </AnimatePresence>
                 </div>
                 <div className={Styles.total}>
                     <span>Total:</span>
                     <span>{total().toFixed(2)} $</span>
                 </div>
-                {StoreData.cart.length ? (
                     <MyButton value={"Buy"} fn={() => {}} />
-                ) : (
-                    "Your cart is empty! Add goods in your cart!"
-                )}
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 });
 

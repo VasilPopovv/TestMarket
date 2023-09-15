@@ -3,8 +3,8 @@ import { observer } from "mobx-react-lite";
 import StoreData from "../../store/StoreData";
 import Styles from "./ProductPage.module.css";
 import MyButton from "../../UI/MyButton/MyButton";
-import Spinner from "../../UI/Spinner/Spinner";
 import BackArrow from "../../Components/BackArrow/BackArrow";
+import { AiFillStar } from "react-icons/ai";
 
 const ProductPage: React.FC = observer(() => {
     const { id } = useParams();
@@ -14,21 +14,34 @@ const ProductPage: React.FC = observer(() => {
         <>
             <section className={Styles.productPage}>
                 <BackArrow />
-                {StoreData.isSpinner ? (
-                    <span className={Styles.spinner}>
-                        <Spinner />
-                    </span>
-                ) : (
+                {!StoreData.isLoading && (
                     <div className={Styles.box}>
                         <div className={Styles.image}>
-                            <img src={product?.image} />
+                            <img src={product.image} />
                         </div>
                         <div className={Styles.description}>
-                            <h2>{product?.title}</h2>
-                            <p>{product?.description}</p>
-                            <h1>{product?.price + "$"}</h1>
+                            <h2>{product.title}</h2>
+                            <div>
+                                <h1>{product.price + "$"}</h1>
+
+                                <span>
+                                    {[
+                                        ...new Array(
+                                            Math.round(product.rating.rate)
+                                        ),
+                                    ].map((_, index) => {
+                                        return (
+                                            <span key={index}>
+                                                <AiFillStar />
+                                            </span>
+                                        );
+                                    })}
+                                </span>
+                            </div>
                             <MyButton value={"Add to cart"} fn={() => {}} />
                             <MyButton value={"Fast buy"} fn={() => {}} />
+                            <h3>Descriptoin</h3>
+                            <p>{product.description}</p>
                         </div>
                     </div>
                 )}

@@ -1,5 +1,6 @@
 .main {
     width: 100%;
+    min-height: 100dvh;
     padding: 2rem;
     gap: 1rem;
     position: relative;
@@ -17,7 +18,7 @@
             height: max-content;
             list-style: none;
             overflow: hidden;
-            & a {
+            & .link {
                 font-size: 1.1rem;
             }
         }
@@ -69,7 +70,7 @@
             & li {
                 width: 50%;
             }
-            & a {
+            & .link {
                 font-size: 1rem;
             }
         }

@@ -7,22 +7,22 @@ import {
 
 export const links = [
   {
-    title: "Electronics",
+    category: "Electronics",
     to: "/goodspage/electronics",
     icon: <HiOutlineComputerDesktop />,
   },
   {
-    title: `Women's clothing`,
+    category: `Women's clothing`,
     to: "/goodspage/women's clothing",
     icon: <IoWomanOutline />,
   },
   {
-    title: `Men's clothing`,
+    category: `Men's clothing`,
     to: "/goodspage/men's clothing",
     icon: <IoManOutline />,
   },
   {
-    title: "Jewelery",
+    category: "Jewelery",
     to: "/goodspage/jewelery",
     icon: <IoDiamondOutline />
   },

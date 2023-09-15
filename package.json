@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "browserslist": [
-    "cover 99.5%"
+    "cover 99%"
   ],
   "scripts": {
     "dev": "vite",

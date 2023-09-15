@@ -10,4 +10,7 @@ export default defineConfig({
             plugins: [autoprefixer],
         },
     },
+    build: {
+        outDir: '../server/static/dist'
+      }
 });

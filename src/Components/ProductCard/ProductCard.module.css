@@ -13,11 +13,19 @@
     background-color: rgb(124, 203, 6);
     border: none;
     border-radius: 5px;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .inCart {
   color: yellow;
+}
+
+.button {
+  color: rgb(40, 40, 40);
 }
 
 .title {
@@ -49,10 +57,12 @@
 
 .img {
   max-width: 100%;
+  width: 100%;
   aspect-ratio: 16/9;
   display: flex;
   justify-content: center;
   & img {
+    max-width: 100%;
     width: auto;
     height: 100%;
   }

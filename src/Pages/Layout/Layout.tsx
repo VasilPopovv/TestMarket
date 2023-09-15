@@ -1,36 +1,33 @@
 import Header from "../../Components/Header/Header";
-import NavBar from "../../Components/NavBar/NavBar";
 import Styles from "./Layout.module.css";
-import { Outlet } from "react-router-dom";
-import RegisterWindow from "../../Components/RegisterWindow/RegisterWindow";
-import CartWindow from "../../Components/CartWindow/CartWindow";
-import ModalWindow from "../../store/ModalWindows";
 import { observer } from "mobx-react-lite";
-import BurgerMenu from "../../Components/BurgerMenu/BurgerMenu";
-import { useMatchMedia } from "../../hooks/myMatcMedia";
 import { useEffect } from "react";
 import StoreData from "../../store/StoreData";
-import ModalRegistr from "../../store/ModalRegistr";
+import Container from "../../Components/Container/Container";
+import ModalWindowsComp from "../../Components/ModalWindows/ModalWindows";
+import ModalWindows from "../../store/ModalWindows";
+import ModalRegister from "../../store/ModalRegister";
+import Spinner from "../../UI/Spinner/Spinner";
 
 const Layout = observer(() => {
-    const { isMobile } = useMatchMedia();
-
+    const { isCartWindow, isBurgerMenu } = ModalWindows;
+    const { isRegWindow } = ModalRegister;
     useEffect(() => {
         StoreData.getData();
     }, []);
 
     return (
-        <div className={Styles.container}>
-                <Header />
-                {ModalRegistr.isRegWindow && <RegisterWindow />}
-                {ModalWindow.isBurgerMenu && <BurgerMenu />}
-                {ModalWindow.isCartWindow && <CartWindow />}
-                <main className={Styles.main}>
-                    {!isMobile && <NavBar />}
-                    <div className={Styles.outlet}>
-                        <Outlet />
-                    </div>
-                </main>
+        <div
+            className={
+                isBurgerMenu || isCartWindow || isRegWindow
+                    ? Styles.wraperStatic
+                    : Styles.wraper
+            }
+        >
+            {StoreData.isLoading && <Spinner />}
+            <Header />
+            <ModalWindowsComp />
+            <Container />
         </div>
     );
 });

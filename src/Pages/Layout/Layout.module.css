@@ -1,9 +1,22 @@
-.container {
-    width: 100dvw;
-    max-width: 1800px;
+.wraper {
+    width: 100dwh;
+    min-height: 100vh;
+    position: relative;
+}
+
+.wraperStatic {
     height: 100dvh;
-    margin: 0 auto;
     overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1800px;
+    height: calc(100dvh - 4rem);
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .main {
@@ -13,9 +26,8 @@
 
 .outlet {
     width: calc(100% - 280px);
-    height: calc(100dvh - 4rem);
     display: flex;
-    overflow: auto;
+    position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -29,6 +41,12 @@
 }
 
 @media (width < 769px) {
+    .container {
+        height: auto;
+    }
+    .containerStatic {
+        max-height: calc(100dvh - 4rem);
+    }
     .outlet {
         width: 100%;
     }
