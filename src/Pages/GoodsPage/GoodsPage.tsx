@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import StoreData from "../../store/StoreData";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import Styles from "./GoodsPage.module.css";
@@ -9,9 +9,14 @@ import BackArrow from "../../Components/BackArrow/BackArrow";
 // const optoins = ["By rating", "By price ⬇", "By price ⬆", "By name"];
 
 const GoodsPage: React.FC = observer(() => {
+    const location = useLocation()
     const { category } = useParams();
     const [sortBy, setSortBy] = useState("");
     const goodsFiltered = StoreData.category(category, sortBy);
+    
+    useEffect(() => {
+        StoreData.addBread( location.pathname )
+    }, [location])
 
 
     return (

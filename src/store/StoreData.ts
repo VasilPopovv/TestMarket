@@ -17,9 +17,11 @@ export type DataType = {
 
 class StoreData {
     data: Array<DataType> = [];
-    isLoading: boolean = true;
     cart: Array<DataType> = [];
+    searchArr: Array<DataType> = []
+    isLoading: boolean = true;
     isNetworkError = false
+    breadCrumbs: Array<string> = []
 
     constructor() {
         makeAutoObservable(this);
@@ -99,6 +101,18 @@ class StoreData {
             .filter((i) => i.category === category)
             .sort((a, b) => a.title.localeCompare(b.title))
         }
+    }
+
+    search(value: string) {
+        if(value.trim().length) {
+            this.searchArr = this.data.filter(i => {
+                return i.title.toLowerCase().includes(value.trim().toLowerCase())
+            })
+        } else this.searchArr = []
+    }
+
+    addBread(str: string = '') {
+        this.breadCrumbs = str.replace('%20', ' ').slice(1).split('/')
     }
 }
 

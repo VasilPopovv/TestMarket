@@ -1,5 +1,5 @@
 import Styles from "./Header.module.css";
-import { BsCart3, BsSearch } from "react-icons/bs";
+import { BsCart3 } from "react-icons/bs";
 import { PiUserCircle } from "react-icons/pi";
 import { HiMenu } from "react-icons/hi";
 import ModalWindows from "../../store/ModalWindows";
@@ -8,10 +8,11 @@ import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 import { useMatchMedia } from "../../hooks/myMatcMedia";
 import StoreData from "../../store/StoreData";
+import HeaderForm from "./HeaderForm";
 
 const Header: React.FC = observer(() => {
     const { isMobile } = useMatchMedia();
-
+   
     return (
         <header className={Styles.header}>
             <div className={Styles.longHeader}></div>
@@ -27,30 +28,7 @@ const Header: React.FC = observer(() => {
                     <div>M</div>
                 </Link>
             )}
-            {!isMobile ? (
-                <form
-                    name="form"
-                    className={Styles.form}
-                    onSubmit={(e) => e.preventDefault()}
-                >
-                    <span>
-                        <BsSearch />
-                    </span>
-                    <input className={Styles.input} type="text" />
-                    <button className={Styles.button}>Search</button>
-                </form>
-            ) : (
-                <form
-                    name="form"
-                    className={Styles.form}
-                    onSubmit={(e) => e.preventDefault()}
-                >
-                    <input className={Styles.mobInput} type="text" />
-                    <button className={Styles.mobButton}>
-                        <BsSearch />
-                    </button>
-                </form>
-            )}
+            <HeaderForm />
             <div className={Styles.navigation}>
                 {!isMobile ? (
                     <>

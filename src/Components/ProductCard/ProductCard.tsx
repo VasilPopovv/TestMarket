@@ -15,18 +15,18 @@ const ProductCard: React.FC<Idata> = observer(({ data }) => {
     const rating = new Array(Math.round(data.rating.rate)).fill("");
 
     const addToCart = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
-        e.stopPropagation()
+        e.stopPropagation();
         e.preventDefault();
         StoreData.addToCart(id);
     };
     const openCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation()
+        e.stopPropagation();
         e.preventDefault();
         ModalWindows.openCartWindow();
     };
 
     return (
-        <div className={Styles.card}>
+        <div className={Styles.card} key={data.title}>
             <div className={Styles.img}>
                 <img src={data.image} />
             </div>
@@ -44,7 +44,7 @@ const ProductCard: React.FC<Idata> = observer(({ data }) => {
             {data.inCart ? (
                 <motion.button
                     whileTap={{ scale: 0.97 }}
-                    transition={{duration: 0.05}}
+                    transition={{ duration: 0.05 }}
                     className={Styles.inCart}
                     onClick={openCart}
                 >
@@ -53,11 +53,14 @@ const ProductCard: React.FC<Idata> = observer(({ data }) => {
             ) : (
                 <motion.button
                     whileTap={{ scale: 0.97 }}
-                    transition={{duration: 0.05}}
+                    transition={{ duration: 0.05 }}
                     onClick={(e) => addToCart(e, data.id)}
                     className={Styles.button}
                 >
-                    <span><BsCart3 /></span><span>Add to cart</span>
+                    <span>
+                        <BsCart3 />
+                    </span>
+                    <span>Add to cart</span>
                 </motion.button>
             )}
         </div>

@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import StoreData from "../../store/StoreData";
 import Styles from "./ProductPage.module.css";
@@ -7,8 +8,13 @@ import BackArrow from "../../Components/BackArrow/BackArrow";
 import { AiFillStar } from "react-icons/ai";
 
 const ProductPage: React.FC = observer(() => {
+    const location = useLocation();
     const { id } = useParams();
     const product = StoreData.data[Number(id) - 1];
+
+    useEffect(() => {
+        StoreData.addBread(location.pathname);
+    }, [location]);
 
     return (
         <>

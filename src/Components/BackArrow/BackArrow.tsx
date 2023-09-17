@@ -1,22 +1,36 @@
 import { useNavigate } from "react-router-dom";
-import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
+import { BiHomeSmile } from "react-icons/bi";
 import Styles from "./BackArrow.module.css";
+import StoreData from "../../store/StoreData";
+import { observer } from "mobx-react-lite";
 
-const BackArrow = () => {
+const BackArrow = observer(() => {
     const navigate = useNavigate();
 
     return (
         <>
             <div className={Styles.back}>
-                <div onClick={() => navigate(-1)}>
-                    <span>
-                        <MdOutlineKeyboardDoubleArrowLeft />
+                <div>
+                    <span onClick={() => navigate("/")}>
+                        <BiHomeSmile />
                     </span>
-                    <span>back</span>
+                    <span>
+                        {StoreData.breadCrumbs.map((i, index) => {
+                            if(index === 1) {
+                                return <span
+                                onClick={() => navigate(`/goodspage/${i}`)}
+                                key={i}>{'/ ' + i}</span>;
+                            } else {
+                                return <span
+                                style={{color: 'gray'}}
+                                key={i}>{'/ ' + i}</span>;
+                            }
+                        })}
+                    </span>
                 </div>
             </div>
         </>
     );
-};
+});
 
 export default BackArrow;

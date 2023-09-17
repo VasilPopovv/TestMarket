@@ -1,0 +1,47 @@
+.searchPage {
+    width: 100%;
+    min-height: 100dvh;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    & ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    & h2 {
+        text-align: center;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+        border-top: 1px solid rgba(128, 128, 128, 0.2);
+    }
+    & li {
+        list-style: none;
+        width: 33%;
+    }
+}
+
+@media (width > 1300px) {
+    .searchPage {
+        & li {
+            width: 25%;
+        }
+    }
+}
+
+@media (width < 1000px) {
+    .searchPage {
+        & li {
+            width: 50%;
+        }
+    }
+}
+
+@media (width < 769px) {
+    .searchPage {
+        padding: 5px;
+        & li {
+            width: 50%;
+        }
+    }
+}
