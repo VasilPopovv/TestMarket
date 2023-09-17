@@ -75,6 +75,9 @@
             }
         }
     }
+    .slider {
+        aspect-ratio: 16/6;
+    }
 }
 
 

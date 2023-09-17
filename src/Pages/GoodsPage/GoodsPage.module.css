@@ -77,13 +77,15 @@
 @media (width < 769px) {
   .goodsPage {
     padding: 1rem 5px;
-    /* gap: 10px; */
     & ul {
       & li {
         padding-top: 15px;
         width: 50%;
       }
     }
+  }
+  .back {
+    padding-left: 10px;
   }
   .filter {
     padding: 5px;

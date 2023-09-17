@@ -4,7 +4,7 @@ import StoreData from "../../store/StoreData";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import Styles from "./GoodsPage.module.css";
 import { observer } from "mobx-react-lite";
-import BackArrow from "../../Components/BackArrow/BackArrow";
+import BackArrow from "../../Components/BreadCrumbs/BreadCrumbs";
 
 // const optoins = ["By rating", "By price ⬇", "By price ⬆", "By name"];
 
@@ -17,7 +17,6 @@ const GoodsPage: React.FC = observer(() => {
     useEffect(() => {
         StoreData.addBread( location.pathname )
     }, [location])
-
 
     return (
         <section className={Styles.goodsPage}>
@@ -48,7 +47,6 @@ const GoodsPage: React.FC = observer(() => {
                                 goodsFiltered.map((i) => {
                                     return (
                                         <li key={i.title} >
-                                            
                                             <Link
                                                 to={`/goodspage/${i.category}/${i.id}`}
                                             >

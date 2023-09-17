@@ -41,28 +41,17 @@ const ProductCard: React.FC<Idata> = observer(({ data }) => {
                 })}
             </div>
             <p className={Styles.price}>{data.price + "$"}</p>
-            {data.inCart ? (
                 <motion.button
                     whileTap={{ scale: 0.97 }}
                     transition={{ duration: 0.05 }}
-                    className={Styles.inCart}
-                    onClick={openCart}
-                >
-                    In cart
-                </motion.button>
-            ) : (
-                <motion.button
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ duration: 0.05 }}
-                    onClick={(e) => addToCart(e, data.id)}
-                    className={Styles.button}
+                    className={data.inCart ? Styles.inCart : Styles.button}
+                    onClick={data.inCart ? openCart : (e) => addToCart(e, data.id)}
                 >
                     <span>
                         <BsCart3 />
                     </span>
-                    <span>Add to cart</span>
+                    {data.inCart ? "In cart" : "Add to cart"}
                 </motion.button>
-            )}
         </div>
     );
 });

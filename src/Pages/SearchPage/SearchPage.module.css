@@ -21,6 +21,10 @@
     }
 }
 
+.breadCrumbs {
+    padding-left: 10px;
+}
+
 @media (width > 1300px) {
     .searchPage {
         & li {
@@ -39,7 +43,7 @@
 
 @media (width < 769px) {
     .searchPage {
-        padding: 5px;
+        padding: 1rem 5px;
         & li {
             width: 50%;
         }

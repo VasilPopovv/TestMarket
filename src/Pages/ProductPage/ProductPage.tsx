@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import StoreData from "../../store/StoreData";
 import Styles from "./ProductPage.module.css";
 import MyButton from "../../UI/MyButton/MyButton";
-import BackArrow from "../../Components/BackArrow/BackArrow";
+import BackArrow from "../../Components/BreadCrumbs/BreadCrumbs";
 import { AiFillStar } from "react-icons/ai";
 
 const ProductPage: React.FC = observer(() => {
@@ -14,11 +14,12 @@ const ProductPage: React.FC = observer(() => {
 
     useEffect(() => {
         StoreData.addBread(location.pathname);
+      
     }, [location]);
 
     return (
         <>
-            <section className={Styles.productPage}>
+            <section className={Styles.productPage} >
                 <BackArrow />
                 {!StoreData.isLoading && (
                     <div className={Styles.box}>

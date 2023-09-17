@@ -12,34 +12,34 @@ const MainPage: React.FC = observer(() => {
         .sort((a, b) => b.rating.rate - a.rating.rate);
 
     return (
-        <section className={Styles.main}>
+        <section
+            className={Styles.main}
+        >
             <div className={Styles.slider}>
                 <Slider />
             </div>
             <h2>Our products</h2>
             <ul>
                 {StoreData.isNetworkError && "Network error"}
-                    <>
-                        {data.map((i) => {
-                            return (
-                                <li key={i.title}>
-                                    <div
-                                        className={Styles.link}
-                                        onClick={(e) => {
-                                            e.stopPropagation()
-                                            navigate(
-                                                `/goodspage/${i.category}/${i.id}`
-                                            )
-                                        }
-                                        }
-                                        // to={`/goodspage/${i.category}/${i.id}`}
-                                    >
-                                        <ProductCard data={i} />
-                                    </div>
-                                </li>
-                            );
-                        })}
-                    </>
+                <>
+                    {data.map((i) => {
+                        return (
+                            <li key={i.title}>
+                                <div
+                                    className={Styles.link}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        navigate(
+                                            `/goodspage/${i.category}/${i.id}`
+                                        );
+                                    }}
+                                >
+                                    <ProductCard data={i} />
+                                </div>
+                            </li>
+                        );
+                    })}
+                </>
             </ul>
         </section>
     );

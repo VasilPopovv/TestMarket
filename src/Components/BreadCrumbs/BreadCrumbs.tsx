@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { BiHomeSmile } from "react-icons/bi";
-import Styles from "./BackArrow.module.css";
+import Styles from "./BreadCrumbs.module.css";
 import StoreData from "../../store/StoreData";
 import { observer } from "mobx-react-lite";
 
-const BackArrow = observer(() => {
+const BreadCrumbs = observer(() => {
     const navigate = useNavigate();
 
     return (
@@ -33,4 +33,4 @@ const BackArrow = observer(() => {
     );
 });
 
-export default BackArrow;
+export default BreadCrumbs;

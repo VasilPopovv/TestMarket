@@ -3,36 +3,29 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useMatchMedia } from "../../hooks/myMatcMedia";
 
 import Styles from "./Slider.module.css";
-import one from "./img/1.jpeg";
+import one from "./img/1.jpg";
 import two from "./img/2.jpg";
 import three from "./img/3.jpg";
 import fore from "./img/4.jpg";
 import five from "./img/5.jpg";
-import { useMatchMedia } from "../../hooks/myMatcMedia";
 
 const slides = [one, two, three, fore, five];
 
-const Slider: React.FC = memo(() => {
+const Slider: React.FC = () => {
     const [nav, setNav] = useState(true)
     const {isMobile} = useMatchMedia()
 
     useEffect(() => {
-        if(isMobile) {
-            setNav(prev => !prev)
-        } else {
-            setNav(prev => !prev)
-        }
+        isMobile ? setNav(false) : setNav(true)
     }, [isMobile])
 
     return (
         <section className={Styles.slider}>
             <Swiper
-                // style={{
-                //     "--swiper-navigation-size": "30px",
-                // }}
                 slidesPerView={1}
                 spaceBetween={0}
                 loop={true}
@@ -57,6 +50,6 @@ const Slider: React.FC = memo(() => {
             </Swiper>
         </section>
     );
-});
+};
 
 export default Slider;

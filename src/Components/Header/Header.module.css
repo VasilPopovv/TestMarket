@@ -24,6 +24,7 @@
     margin: 0 10px;
     position: relative;
     display: flex;
+    justify-content: center;
 }
 
 .form span {
@@ -42,7 +43,10 @@
 }
 
 .searchResult {
+    max-width: 100dvw;
     width: 100%;
+    min-width: 100%;
+    max-height: calc(100dvh - 6rem);
     padding: 5px;
     position: absolute;
     top: 2.6rem;
@@ -50,6 +54,7 @@
     border: 1px solid black;
     border-radius: 5px;
     z-index: -1;
+    overflow: hidden;
     & ul {
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -191,4 +196,10 @@
     position: absolute;
     top: 0;
     right: 0;
+}
+
+@media (width < 760px) {
+    .searchResult {
+        width: 140%;
+    }
 }

@@ -18,10 +18,11 @@ export type DataType = {
 class StoreData {
     data: Array<DataType> = [];
     cart: Array<DataType> = [];
-    searchArr: Array<DataType> = []
+    // searchArr: Array<DataType> = []
     isLoading: boolean = true;
     isNetworkError = false
     breadCrumbs: Array<string> = []
+    searchValue: string = ''
 
     constructor() {
         makeAutoObservable(this);
@@ -103,16 +104,20 @@ class StoreData {
         }
     }
 
-    search(value: string) {
-        if(value.trim().length) {
-            this.searchArr = this.data.filter(i => {
-                return i.title.toLowerCase().includes(value.trim().toLowerCase())
-            })
-        } else this.searchArr = []
-    }
+    // search(value: string) {
+    //     if(value.trim().length) {
+    //         this.searchArr = this.data.filter(i => {
+    //             return i.title.toLowerCase().includes(value.trim().toLowerCase())
+    //         })
+    //     } else this.searchArr = []
+    // }
 
     addBread(str: string = '') {
         this.breadCrumbs = str.replace('%20', ' ').slice(1).split('/')
+    }
+
+    setSearchValue(value: string) {
+        this.searchValue = value.trim()
     }
 }
 
