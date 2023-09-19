@@ -1,7 +1,7 @@
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import BurgerMenu from "../../blocks/BurgerMenu/BurgerMenu";
 import ModalRegistr from "../../store/ModalRegister";
-import RegisterWindow from "../RegisterWindow/RegisterWindow";
-import CartWindow from "../CartWindow/CartWindow";
+import RegisterWindow from "../../blocks/RegisterWindow/RegisterWindow";
+import CartWindow from "../../blocks/CartWindow/CartWindow";
 import ModalWindow from "../../store/ModalWindows";
 import { observer } from "mobx-react-lite";
 import { AnimatePresence } from "framer-motion";

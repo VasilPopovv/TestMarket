@@ -6,6 +6,9 @@ import Styles from "./ProductPage.module.css";
 import MyButton from "../../UI/MyButton/MyButton";
 import BackArrow from "../../Components/BreadCrumbs/BreadCrumbs";
 import { AiFillStar } from "react-icons/ai";
+import { BsCart3 } from "react-icons/bs";
+import { motion } from "framer-motion";
+import ModalWindows from '../../store/ModalWindows'
 
 const ProductPage: React.FC = observer(() => {
     const location = useLocation();
@@ -14,12 +17,11 @@ const ProductPage: React.FC = observer(() => {
 
     useEffect(() => {
         StoreData.addBread(location.pathname);
-      
     }, [location]);
 
     return (
         <>
-            <section className={Styles.productPage} >
+            <section className={Styles.productPage}>
                 <BackArrow />
                 {!StoreData.isLoading && (
                     <div className={Styles.box}>
@@ -45,7 +47,25 @@ const ProductPage: React.FC = observer(() => {
                                     })}
                                 </span>
                             </div>
-                            <MyButton value={"Add to cart"} fn={() => {}} />
+                            <motion.button
+                                whileTap={{ scale: 0.97 }}
+                                transition={{ duration: 0.05 }}
+                                className={
+                                    product.inCart
+                                        ? Styles.inCart
+                                        : Styles.button
+                                }
+                                onClick={
+                                    product.inCart
+                                        ? () => ModalWindows.openCartWindow()
+                                        : () => StoreData.addToCart(Number(id))
+                                }
+                            >
+                                <span>
+                                    <BsCart3 />
+                                </span>
+                                {product.inCart ? "In cart" : "Add to cart"}
+                            </motion.button>
                             <MyButton value={"Fast buy"} fn={() => {}} />
                             <h3>Descriptoin</h3>
                             <p>{product.description}</p>
