@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Styles from "./Header.module.css";
 import StoreData from "../../store/StoreData";
-import { useMatchMedia } from "../../hooks/myMatcMedia";
+import { useMatchMedia } from "../../utils/hooks/myMatcMedia";
 import { observer } from "mobx-react-lite";
 import { DataType } from "../../store/StoreData";
 

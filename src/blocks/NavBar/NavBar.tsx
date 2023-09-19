@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import Styles from "./NavBar.module.css";
-import { links } from "../NavLinks/NavLinks";
+import { links } from "../../Components/NavLinks/NavLinks";
 import { memo } from "react";
 import { motion } from "framer-motion";
-import AppLinks from "../AppLinks/AppLinks";
+import AppLinks from "../../Components/AppLinks/AppLinks";
 
 
 const NavBar = memo(() => {

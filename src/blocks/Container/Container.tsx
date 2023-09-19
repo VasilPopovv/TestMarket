@@ -1,8 +1,8 @@
 import { memo } from "react";
-import Styles from "../../Pages/Layout/Layout.module.css";
+import Styles from "../../Layout/Layout.module.css";
 import { Outlet } from "react-router-dom";
-import NavBar from "../../Components/NavBar/NavBar";
-import { useMatchMedia } from "../../hooks/myMatcMedia";
+import NavBar from "../NavBar/NavBar";
+import { useMatchMedia } from "../../utils/hooks/myMatcMedia";
 
 const Container: React.FC = memo(() => {
     const { isMobile } = useMatchMedia();

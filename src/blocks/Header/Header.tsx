@@ -6,7 +6,7 @@ import ModalWindows from "../../store/ModalWindows";
 import ModalRegister from "../../store/ModalRegister";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
-import { useMatchMedia } from "../../hooks/myMatcMedia";
+import { useMatchMedia } from "../../utils/hooks/myMatcMedia";
 import StoreData from "../../store/StoreData";
 import HeaderForm from "./HeaderForm";
 

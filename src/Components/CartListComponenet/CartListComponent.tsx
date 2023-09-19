@@ -1,10 +1,10 @@
 import Styles from "./CartListCmoponent.module.css";
-import { DataType } from "../../../store/StoreData";
+import { DataType } from "../../store/StoreData";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaSquareMinus, FaSquarePlus } from "react-icons/fa6";
-import StoreData from "../../../store/StoreData";
+import StoreData from "../../store/StoreData";
 import { Link } from "react-router-dom";
-import ModalWindows from "../../../store/ModalWindows";
+import ModalWindows from "../../store/ModalWindows";
 
 interface IProps {
     data: DataType;

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import Styles from './AppLinks.module.css'
-import app1 from "../../image/svg/app1.svg";
-import app2 from "../../image/svg/app2.svg";
+import app1 from "../../assets/image/svg/app1.svg";
+import app2 from "../../assets/image/svg/app2.svg";
 
 
 const AppLinks = () => {

@@ -2,7 +2,7 @@ import Styles from "./BurgerMenu.module.css";
 import { IoMdClose } from "react-icons/io";
 import ModalWindows from "../../store/ModalWindows";
 import ModalRegister from "../../store/ModalRegister";
-import { links } from "../NavLinks/NavLinks";
+import { links } from "../../Components/NavLinks/NavLinks";
 import { NavLink } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { PiUserCircle } from "react-icons/pi";
@@ -10,7 +10,7 @@ import { BsCart3 } from "react-icons/bs";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StoreData from "../../store/StoreData";
-import AppLinks from "../AppLinks/AppLinks";
+import AppLinks from "../../Components/AppLinks/AppLinks";
 
 const BurgerMenu = () => {
     const [open, setOpen] = useState(false);

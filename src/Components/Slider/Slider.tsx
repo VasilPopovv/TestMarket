@@ -4,7 +4,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
-import { useMatchMedia } from "../../hooks/myMatcMedia";
+import { useMatchMedia } from "../../utils/hooks/myMatcMedia";
 
 import Styles from "./Slider.module.css";
 import one from "./img/1.jpg";

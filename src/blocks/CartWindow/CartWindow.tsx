@@ -3,7 +3,7 @@ import ModalWindows from "../../store/ModalWindows";
 import StoreData from "../../store/StoreData";
 import MyButton from "../../UI/MyButton/MyButton";
 import { IoMdClose } from "react-icons/io";
-import CartListComponent from "./CartListComponenet/CartListComponent";
+import CartListComponent from "../../Components/CartListComponenet/CartListComponent";
 import { observer } from "mobx-react-lite";
 import { motion, AnimatePresence } from "framer-motion";
 import { MouseEventHandler } from "react";

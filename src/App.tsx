@@ -6,7 +6,7 @@ import {
     Route,
 } from "react-router-dom";
 import {} from "react-router-dom";
-import Layout from "./Pages/Layout/Layout";
+import Layout from "./Layout/Layout";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import MainPage from "./Pages/MainPage/MainPage";
 import GoodsPage from "./Pages/GoodsPage/GoodsPage";
