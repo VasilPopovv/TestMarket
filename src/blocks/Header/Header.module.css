@@ -181,6 +181,18 @@
     transition: 0.5s;
 }
 
+.person {
+    & span {
+        position: absolute;
+        width: 1rem;
+        aspect-ratio: 1;
+        background-color: rgb(2, 216, 2);
+        border-radius: 50%;
+        top: 0;
+        right: 0;
+    }
+}
+
 .cartN {
     min-width: 1.5rem;
     min-height: 1.5rem;

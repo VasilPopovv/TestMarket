@@ -5,14 +5,16 @@ import { HiMenu } from "react-icons/hi";
 import ModalWindows from "../../store/ModalWindows";
 import ModalRegister from "../../store/ModalRegister";
 import { observer } from "mobx-react-lite";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMatchMedia } from "../../utils/hooks/myMatcMedia";
 import StoreData from "../../store/StoreData";
 import HeaderForm from "./HeaderForm";
+import UserData from "../../store/UserData";
 
 const Header: React.FC = observer(() => {
     const { isMobile } = useMatchMedia();
-   
+    const navigate = useNavigate()
+
     return (
         <header className={Styles.header}>
             <div className={Styles.longHeader}></div>
@@ -33,10 +35,15 @@ const Header: React.FC = observer(() => {
                 {!isMobile ? (
                     <>
                         <div
-                            onClick={() => ModalRegister.openRegWind()}
+                            onClick={
+                                UserData.isRegister
+                                    ? () => navigate('/user')
+                                    : () => ModalRegister.openRegWind()
+                            }
                             className={Styles.person}
                         >
                             <PiUserCircle />
+                            {UserData.isRegister && <span></span>}
                         </div>
                         <div
                             onClick={() => {

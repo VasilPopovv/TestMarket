@@ -11,6 +11,7 @@ const SearchPage: React.FC = observer(() => {
     const navigate = useNavigate();
     const location = useLocation();
     const [searchedArr, setSearchedArr] = useState<Array<DataType>>([]);
+    const data = StoreData.data
 
     useEffect(() => {
         StoreData.addBread(location.pathname);
@@ -18,12 +19,12 @@ const SearchPage: React.FC = observer(() => {
             setSearchedArr([]);
         } else {
             setSearchedArr(
-                StoreData.data.filter((i) =>
+                data.filter((i) =>
                     i.title.toLowerCase().includes(StoreData.searchValue.toLowerCase())
                 )
             );
         }
-    }, [location]);
+    }, [location, data] );
 
     return (
         <div className={Styles.searchPage}>

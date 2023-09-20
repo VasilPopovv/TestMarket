@@ -12,6 +12,7 @@ import MainPage from "./Pages/MainPage/MainPage";
 import GoodsPage from "./Pages/GoodsPage/GoodsPage";
 import ProductPage from "./Pages/ProductPage/ProductPage";
 import SearchPage from "./Pages/SearchPage/SearchPage";
+import UserPage from "./Pages/UserPage/UserPage";
 
 const Router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,6 +22,7 @@ const Router = createBrowserRouter(
                 <Route path="goodspage/:category" element={<GoodsPage />} />
                 <Route path="goodspage/:title/:id" element={<ProductPage />} />
                 <Route path="search" element={<SearchPage />} />
+                <Route path="/user" element={<UserPage />} />
             </Route>
             <Route path="*" element={<ErrorPage />} />
         </>

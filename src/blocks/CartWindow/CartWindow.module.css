@@ -48,7 +48,6 @@
     max-height: 500px;
     overflow-x: hidden;
     & ul {
-        overflow-y: auto;
         display: flex;
         flex-direction: column;
         gap: 5px;

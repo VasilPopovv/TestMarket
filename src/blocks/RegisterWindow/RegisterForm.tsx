@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import UserData from "../../store/UserData";
 import { observer } from "mobx-react-lite";
-// import ModalRegister from '../../store/ModalRegister'
+import ModalRegister from "../../store/ModalRegister";
 
 const RegisterForm: React.FC = observer(() => {
     const [isReg, setIsReg] = useState<boolean>(false);
@@ -12,15 +12,27 @@ const RegisterForm: React.FC = observer(() => {
     const [userEmail, setUserEmail] = useState<string>("");
     const [userPassword, setUserPassword] = useState<string>("");
 
+    const logIn = () => {
+        if (!userEmail.length && !userPassword.length) return;
+        UserData.logIn(userEmail, userPassword);
+        if (!UserData.isLogInMistake) {
+            setUserName("");
+            setUserEmail("");
+            setUserPassword("");
+            ModalRegister.openRegWind();
+        }
+    };
+
     const addUser = () => {
-        UserData.users.map(i => console.log({...i}))
         if (userName.length && userEmail.length && userPassword.length) {
             UserData.addUser(userName, userEmail, userPassword);
         }
         if (!UserData.isRegMistake) {
+            UserData.logIn(userEmail, userPassword);
             setUserName("");
             setUserEmail("");
             setUserPassword("");
+            ModalRegister.openRegWind();
         }
     };
 
@@ -37,8 +49,9 @@ const RegisterForm: React.FC = observer(() => {
                 value={userEmail}
                 type="email"
                 placeholder="E-mail"
-                className={UserData.isRegMistake ? Styles.mailInp : ''}
+                className={UserData.isRegMistake ? Styles.mailInp : ""}
             />
+            {UserData.isLogInMistake && <p>E-mail or Password incorrect!</p>}
             {UserData.isRegMistake && <p>{UserData.regMistake}</p>}
             {isReg && (
                 <input
@@ -64,18 +77,22 @@ const RegisterForm: React.FC = observer(() => {
                 </span>
             </div>
             <div className={Styles.forgot}>
-                <label htmlFor="check">
+                <label htmlFor="checkBox">
                     <input
                         className={Styles.check}
                         type="checkbox"
-                        id="check"
+                        id="checkBox"
                     />
                     <div>Remeber me</div>
                 </label>
                 {!isReg && <span>Forgot password</span>}
-                {isReg && <span onClick={() => setIsReg(false)}>Log in</span>}
+                {isReg && <span onClick={() => setIsReg(false)}>log in</span>}
             </div>
-            {!isReg && <button className={Styles.button}>log in</button>}
+            {!isReg && (
+                <button onClick={logIn} className={Styles.button}>
+                    Log in
+                </button>
+            )}
             <button
                 onClick={!isReg ? () => setIsReg(true) : addUser}
                 className={isReg ? Styles.buttonRegAct : Styles.buttonReg}

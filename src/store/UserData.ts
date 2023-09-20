@@ -11,6 +11,7 @@ class UserData {
     isRegister: boolean = false;
     currentUser: usersType | null = null;
     isRegMistake: boolean = false;
+    isLogInMistake: boolean = false;
     regMistake: string = "";
 
     constructor() {
@@ -25,21 +26,46 @@ class UserData {
                 password: password,
                 email: email,
             });
-        }
-        this.users.map((i) => {
-            if (i.email === email) {
-                console.log(i)
-                this.regMistake = "User with the same E-mail already exists!";
-                this.isRegMistake = true;
+            return;
+        } else {
+            const users = this.users;
+            for (let i = 0; i < this.users.length; i++) {
+                if (users[i].email === email) {
+                    this.regMistake =
+                        "User with the same E-mail already exists!";
+                    this.isRegMistake = true;
+                    return;
+                }
             }
-        });
-        if(!this.isRegMistake) {
-            this.users.push({
-                userName: name,
-                password: password,
-                email: email,
-            });
         }
+        this.users.push({
+            userName: name,
+            password: password,
+            email: email,
+        });
+    }
+
+    logIn(email: string, userPassword: string) {
+        this.isLogInMistake = false
+        for (let i = 0; i < this.users.length; i++) {
+            if (
+                email === this.users[i].email &&
+                userPassword === this.users[i].password
+            ) {
+                this.isRegister = true;
+                this.currentUser = this.users[i];
+                console.log('registr is success')
+                console.log({...this.currentUser})
+                return
+            }
+        }
+        this.isLogInMistake = true
+        console.log('registr error')
+    }
+
+    logOut() {
+        this.isRegister = false
+        this.currentUser = null
     }
 }
 

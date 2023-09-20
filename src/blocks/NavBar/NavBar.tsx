@@ -1,15 +1,29 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Styles from "./NavBar.module.css";
 import { links } from "../../Components/NavLinks/NavLinks";
-import { memo } from "react";
+import { observer } from "mobx-react-lite";
 import { motion } from "framer-motion";
 import AppLinks from "../../Components/AppLinks/AppLinks";
+import UserData from "../../store/UserData";
+import { PiUserCircle } from "react-icons/pi";
 
+const NavBar = observer(() => {
+    const navigate = useNavigate()
 
-const NavBar = memo(() => {
     return (
         <div className={Styles.navbar}>
             <ul>
+                {UserData.isRegister && (
+                    <div
+                    onClick={() => navigate('/user')}
+                     className={Styles.navUser}>
+                        <PiUserCircle />
+                        <div>
+                            <h4>{UserData.currentUser?.userName}</h4>
+                            <span>{UserData.currentUser?.email}</span>
+                        </div>
+                    </div>
+                )}
                 {links.map((i) => {
                     return (
                         <motion.li

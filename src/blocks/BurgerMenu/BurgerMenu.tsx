@@ -11,9 +11,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StoreData from "../../store/StoreData";
 import AppLinks from "../../Components/AppLinks/AppLinks";
+import UserData from "../../store/UserData";
+import { MdLogout } from "react-icons/md";
+import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
 
-const BurgerMenu = () => {
+const BurgerMenu: React.FC = observer(() => {
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
     const loginHandler = () => {
         ModalWindows.openBurgerMenu();
@@ -54,11 +59,43 @@ const BurgerMenu = () => {
                 </div>
                 <section>
                     <div>
-                        <div className={Styles.logIn} onClick={loginHandler}>
-                            <span>
+                        <div
+                            className={Styles.logIn}
+                            onClick={
+                                UserData.isRegister
+                                    ? () => {
+                                          navigate("/user");
+                                          ModalWindows.openBurgerMenu();
+                                      }
+                                    : loginHandler
+                            }
+                        >
+                            <span className={Styles.avatar}>
                                 <PiUserCircle />
                             </span>
-                            Log in
+                            {UserData.isRegister ? (
+                                <div className={Styles.currentUser}>
+                                    <div>
+                                        <h4>
+                                            {UserData.currentUser?.userName}
+                                        </h4>
+                                        <span>
+                                            {UserData.currentUser?.email}
+                                        </span>
+                                    </div>
+                                    <div
+                                        className={Styles.logOut}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            UserData.logOut();
+                                        }}
+                                    >
+                                        <MdLogout />
+                                    </div>
+                                </div>
+                            ) : (
+                                <h4>Log in</h4>
+                            )}
                         </div>
 
                         <div
@@ -125,6 +162,6 @@ const BurgerMenu = () => {
             </motion.div>
         </motion.div>
     );
-};
+});
 
 export default BurgerMenu;

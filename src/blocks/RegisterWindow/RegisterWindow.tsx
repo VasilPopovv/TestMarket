@@ -6,8 +6,10 @@ import { LiaFacebookF } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import RegisterForm from "./RegisterForm";
+import UserData from '../../store/UserData'
+import { observer } from "mobx-react-lite";
 
-const RegisterWindow = () => {
+const RegisterWindow: React.FC = observer(() => {
 
     return (
         <motion.div
@@ -49,10 +51,11 @@ const RegisterWindow = () => {
                             Google
                         </Link>
                     </div>
+                    {UserData.users.map(i => <p key={i.email}>{i.email}</p>)}
                 </div>
             </motion.div>
         </motion.div>
     );
-};
+});
 
 export default RegisterWindow;
