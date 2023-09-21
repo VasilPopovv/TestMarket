@@ -22,7 +22,7 @@ const BreadCrumbs = observer(() => {
                                 key={i}>{'/ ' + i}</span>;
                             } else {
                                 return <span
-                                style={{color: 'gray'}}
+                                style={{color: 'gray', cursor: 'default'}}
                                 key={i}>{'/ ' + i}</span>;
                             }
                         })}

@@ -1,0 +1,14 @@
+.backGround {
+    width: 100dvw;
+    min-height: 500px;
+    height: 100dvh;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    animation: back 0.1s linear;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 110;
+  }

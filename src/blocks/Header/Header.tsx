@@ -13,69 +13,70 @@ import UserData from "../../store/UserData";
 
 const Header: React.FC = observer(() => {
     const { isMobile } = useMatchMedia();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <header className={Styles.header}>
-            <div className={Styles.longHeader}></div>
-            {!isMobile ? (
-                <div>
-                    <Link to={"/"} className={Styles.logo}>
-                        <span>{"My"}</span>
-                        {" market"}
-                    </Link>
-                </div>
-            ) : (
-                <Link className={Styles.mobLogo} to={"/"}>
-                    <div>M</div>
-                </Link>
-            )}
-            <HeaderForm />
-            <div className={Styles.navigation}>
+            <div className={Styles.header__inner}>
                 {!isMobile ? (
-                    <>
-                        <div
-                            onClick={
-                                UserData.isRegister
-                                    ? () => navigate('/user')
-                                    : () => ModalRegister.openRegWind()
-                            }
-                            className={Styles.person}
-                        >
-                            <PiUserCircle />
-                            {UserData.isRegister && <span></span>}
-                        </div>
-                        <div
-                            onClick={() => {
-                                if (!StoreData.cart.length) return;
-                                ModalWindows.openCartWindow();
-                            }}
-                            className={Styles.cart}
-                        >
-                            <BsCart3 />
-                            {StoreData.cart.length ? (
-                                <span className={Styles.cartN}>
-                                    {StoreData.cart.length}
-                                </span>
-                            ) : (
-                                ""
-                            )}
-                        </div>
+                    <div>
+                        <Link to={"/"} className={Styles.logo}>
+                            <span>{"My"}</span>
+                            {" market"}
+                        </Link>
+                    </div>
+                ) : (
+                    <Link className={Styles.mobLogo} to={"/"}>
+                        <div>M</div>
+                    </Link>
+                )}
+                <HeaderForm />
+                <div className={Styles.navigation}>
+                    {!isMobile ? (
+                        <>
+                            <div
+                                onClick={
+                                    UserData.isRegister
+                                        ? () => navigate("/user")
+                                        : () => ModalRegister.openRegWind()
+                                }
+                                className={Styles.person}
+                            >
+                                <PiUserCircle />
+                                {UserData.isRegister && <span></span>}
+                            </div>
+                            <div
+                                onClick={() => {
+                                    if (!StoreData.cart.length) return;
+                                    ModalWindows.openCartWindow();
+                                }}
+                                className={Styles.cart}
+                            >
+                                <BsCart3 />
+                                {StoreData.cart.length ? (
+                                    <span className={Styles.cartN}>
+                                        {StoreData.cart.length}
+                                    </span>
+                                ) : (
+                                    ""
+                                )}
+                            </div>
+                            <div
+                                onClick={() => ModalWindows.openBurgerMenu()}
+                                className={Styles.burger}
+                            >
+                                <HiMenu />
+                            </div>
+                        </>
+                    ) : (
                         <div
                             onClick={() => ModalWindows.openBurgerMenu()}
-                            className={Styles.burger}
+                            className={Styles.mobBurger}
                         >
                             <HiMenu />
                         </div>
-                    </>
-                ) : (
-                    <div
-                        onClick={() => ModalWindows.openBurgerMenu()}
-                        className={Styles.mobBurger}
-                    >
-                        <HiMenu />
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </header>
     );

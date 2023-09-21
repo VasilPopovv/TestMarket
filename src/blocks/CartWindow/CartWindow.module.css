@@ -1,18 +1,10 @@
-.backGround {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
-}
 
 .window {
     max-width: 600px;
     min-width: 350px;
     height: auto;
     max-height: calc(100dvh - 4rem);
+    position: absolute;
     overflow: hidden;
     background-color: #fff;
     border-radius: 15px;
